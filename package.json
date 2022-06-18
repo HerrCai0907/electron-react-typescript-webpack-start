@@ -4,14 +4,12 @@
   "description": "",
   "main": "./dist/main/main.js",
   "scripts": {
-    "prepublishOnly": "git stash && npm run release && npm run test",
     "prepare": "husky install",
-    "preversion": "npm run build && npm run unit",
     "version": "conventional-changelog -i CHANGELOG.md -s -n conventional-changelog.config.js && git add CHANGELOG.md",
     "build": "webpack",
     "release": "webpack --mode production",
     "watch": "webpack --watch",
-    "pack": "npm run release && electron-builder",
+    "pack": "npm run release && electron-builder --config electron-builder.yml",
     "start": "electron --trace-warnings ."
   },
   "repository": {
@@ -22,19 +20,6 @@
     "electron_builder_binaries_mirror": "https://npm.taobao.org/mirrors/electron-builder-binaries/"
   },
   "build": {
-    "appId": "com.electron.electron-wordcloud",
-    "compression": "store",
-    "asar": true,
-    "files": [
-      "./dist/main/**/*",
-      "./dist/web/**/*"
-    ],
-    "mac": {
-      "category": "your.app.category.type"
-    },
-    "linux": {
-      "category": "your.app.category.type"
-    },
     "electronDownload": {
       "mirror": "https://npm.taobao.org/mirrors/electron/"
     }
